@@ -27,3 +27,17 @@ m <- cbind(a_vals, b_vals)    # fill the values col-wise, across rows
 m
 m <- rbind(a_vals, b_vals)    # fill the values row-wise, across cols
 m
+
+# named elements
+# matrices can have both column and row names
+x <- matrix(1:9, nrow = 3, ncol = 3)
+x
+
+dimnames(x) <- list(c('a', 'b', 'c'), c('x', 'y', 'z'))
+x
+rownames(x)
+colnames(x)
+#
+rownames(x) <- c(1.1, 2.2, 3.3)
+colnames(x) <- c('p', 'q', 'r')
+x

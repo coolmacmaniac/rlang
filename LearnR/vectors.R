@@ -44,3 +44,12 @@ is.nan(v1)        # NA is not NaN
 v2 <- c(1, 3, 5, NA, NaN, 9)
 is.na(v2)         # NA is NA, NaN is NA
 is.nan(v2)        # NA is not NaN, NaN is NaN
+
+# named elements
+x <- 1:3
+names(x)
+names(x) <- c("Berlin", "Paris", "London")
+x
+x[1]
+x["London"]
+names(x)

@@ -28,3 +28,11 @@ x[4,1] <- 16
 x
 x[2] <- c("PQ", "QR", "RS", "ST", "TU")
 x
+
+# named elements
+row.names(x)
+names(x)
+row.names(x) <- c('JAN', 'FEB', 'MAR', 'APR', 'MAY')
+x
+x['JAN',]
+x['MAR', 2]
