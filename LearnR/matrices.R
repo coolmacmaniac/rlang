@@ -16,6 +16,10 @@ m
 dim(m) <- c(5, 2)
 m
 
+# accessing individual elements
+m[1, 3]
+m[2, 4]
+
 # column or row binding
 a_vals <- 1:5       # number of elements should be same as in b_vals
 b_vals <- 11:15     # number of elements should be same as in a_vals
