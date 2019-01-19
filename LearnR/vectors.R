@@ -36,3 +36,11 @@ as.integer(z)   # NA generated
 as.numeric(z)   # NA generated
 as.logical(z)   # NA generated
 as.complex(z)   # NA generated
+
+# checking NA and NaN values
+v1 <- c(1, 3, 5, NA, 9)
+is.na(v1)         # NA is NA
+is.nan(v1)        # NA is not NaN
+v2 <- c(1, 3, 5, NA, NaN, 9)
+is.na(v2)         # NA is NA, NaN is NA
+is.nan(v2)        # NA is not NaN, NaN is NaN
