@@ -16,10 +16,14 @@ glimpse(mtcars)
 plt <- ggplot(data = mpg)
 
 # define the x-y mapping aesthetics
-# viz_lyr <- aes(x = displ, y = hwy)
+# viz_lyr <- aes(x = displ, y = hwy, colour = class)
+# viz_lyr <- aes(x = displ, y = hwy, size = class)
+viz_lyr <- aes(x = displ, y = hwy, alpha = class)
+# viz_lyr <- aes(x = displ, y = hwy, shape = class)
 # viz_lyr <- aes(x = hwy, y = cyl)
-viz_lyr <- aes(x = class, y = drv)
+# viz_lyr <- aes(x = class, y = drv)
 
 # do the plotting
 # plt + geom_point(mapping = viz_lyr)
-plt + geom_count(mapping = viz_lyr)
+plt + geom_point(mapping = viz_lyr, color = "blue")
+# plt + geom_count(mapping = viz_lyr)
