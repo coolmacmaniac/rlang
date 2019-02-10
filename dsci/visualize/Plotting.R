@@ -172,3 +172,93 @@ ggplot(mpg, mapping = aes(x = displ, y = hwy)) +
 
 ####
 
+# statistical transformations
+
+tail(diamonds)
+count(diamonds, cut)
+count(diamonds, color)
+count(diamonds, cut, color)
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut),
+    color = "black",
+    fill = "violet",
+    alpha = 0.3
+    )
+
+ggplot(data = diamonds) +
+  stat_count(
+    mapping = aes(x = cut),
+    color = "blue",
+    fill = "violet",
+    alpha = 0.3
+  )
+
+demo <- tribble(
+  ~a, ~b,
+  "bar_1", 20,
+  "bar_2", 30,
+  "bar_3", 40
+)
+ggplot(data = demo) + geom_bar(mapping = aes(x = a))
+ggplot(data = demo) + geom_bar(mapping = aes(x = a, y = b), stat = 'identity')
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, y = ..prop..)
+  )
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, y = ..prop.., fill = color)
+  )
+
+# If x or y are categorical variables, the rows with the same level form a
+# group. This is default grouping. geom_bar has underlying stat as count and it
+# counts the rows based on 'x' categories. In this case, the each of the
+# categories of 'x' form a separate group, the counted values form 'y' values.
+# This is useful when the values on 'y' are not related amout various 'x'
+# groups like for count. If we use prop as 'y' values then they are related
+# over multiple groups of 'x', i.e., they are proportional to each other.
+# So for such cases, we should treat all 'x' categories as one group and we can
+# override the default grouping by using group parameter of aes.
+# In the following code, the group value can be any constant such as 1 or 'abc'
+# After removing the default grouping, geom treats all categories as one group
+# so that there is a combined plot taking all categories of 'x' into context.
+# We can use any computed variable for 'y' but surrounded by two dots (..)
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, y = ..prop.., group = 'single-grp-123')
+  )
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, y = ..prop.., fill = color, group = color)
+  )
+
+ggplot(data = diamonds) +
+  stat_summary(
+    mapping = aes(x = cut, y = depth),
+    fun.ymin = min,
+    fun.ymax = max,
+    fun.y = median
+  )
+
+ggplot(data = diamonds) +
+  geom_pointrange(
+    mapping = aes(x = cut, y = depth),
+    stat = "summary",
+    fun.ymin = min,
+    fun.ymax = max,
+    fun.y = mean
+  )
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut)
+  )
+
+ggplot(data = diamonds) +
+  geom_col(
+    mapping = aes(x = cut, y = depth)
+  )
