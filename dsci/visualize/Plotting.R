@@ -262,3 +262,76 @@ ggplot(data = diamonds) +
   geom_col(
     mapping = aes(x = cut, y = depth)
   )
+
+# position adjustments
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, colour = cut)
+  )
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, fill = cut)
+  )
+
+count(diamonds, cut)
+count(diamonds, cut, clarity)
+tail(count(diamonds, cut, clarity), n = 8L)
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, fill = clarity)
+  )
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, fill = clarity),
+    position = "stack"
+  )
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, fill = clarity),
+    alpha = 1/5, position = "identity"
+  )
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, colour = clarity),
+    fill = NA, position = "identity"
+  )
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, fill = clarity),
+    position = "fill"
+  )
+
+ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = cut, fill = clarity),
+    position = "dodge"
+  )
+
+ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy),
+    position = "jitter"
+  )
+
+ggplot(data = mpg) +
+  geom_jitter(
+    mapping = aes(x = displ, y = hwy)
+  )
+
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+  geom_point()
+
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy, colour = class)) +
+  # geom_jitter(width = 0.25, height = 0.25)
+  geom_jitter(width = 0.5, height = 0.5)
+  # geom_jitter(width = 1.0, height = 1.0)
+  # geom_jitter(width = 0)
+  # geom_jitter(height = 0)
+  # geom_jitter(width = 0, height = 0)
